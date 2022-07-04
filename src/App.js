@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import SignUpForm from "./components/SignUpForm";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="vh-100 bg-info">
+    <div className="container">
+      <h1 className="text-secondary text-center display-3 py-4">Formik & Yup </h1>
+      <SignUpForm />
+    </div>
     </div>
   );
-}
+};
 
 export default App;
