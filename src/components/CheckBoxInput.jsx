@@ -1,11 +1,16 @@
 const CheckBoxInput = ({ checkboxUtil, name, formik }) => {
   return (
     <>
-      <div>
-        <label className=" text-dark">Experties</label>
-        <div className="form-label d-flex">
+      <label
+        style={{ fontSize: "1.1rem" }}
+        className="mt-2 text-dark form-label"
+      >
+        Experties
+      </label>
+      <div className="container">
+        <div className="form-label row">
           {checkboxUtil.map((c) => (
-            <div key={c.value} className="form-check mt-2">
+            <div key={c.value} className="col-md-2 form-check mt-2">
               <input
                 id={c.value}
                 className="form-check-input"

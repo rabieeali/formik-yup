@@ -4,7 +4,7 @@ const SelectInput = ({ formik, selectInputUtil, name }) => {
       <select
         name={name}
         {...formik.getFieldProps(name)}
-        className="form-controlform-select form-select-sm"
+        className="form-control form-select form-select-sm"
       >
         {selectInputUtil.map((util) => (
           <option key={util.value} value={util.value}>

@@ -9,7 +9,7 @@ import SelectInput from "./SelectInput";
 console.clear();
 
 const selectInputUtil = [
-  { label: "Select Your Nationality ...", value: "" },
+  { label: "Nationality", value: "" },
   { label: "Iran", value: "IR" },
   { label: "Germany", value: "GER" },
   { label: "USA", value: "US" },
@@ -44,8 +44,14 @@ const initialValues = {
 };
 
 const onSubmit = (values, { resetForm }) => {
-  console.log(values);
   resetForm({ values: "" });
+  window.confirm("Done!");
+  alert(`Your Form Data : ${JSON.stringify(values)}`);
+  console.log(values);
+  //   axios
+  //     .post(URL, values)
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
 };
 
 //   const validate = (values) => {
@@ -88,9 +94,7 @@ const validationSchema = Yup.object({
   gender: Yup.string().required("please select one"),
   nationality: Yup.string().required("select your nationality"),
   experties: Yup.array().min(1).required("please select one"),
-  terms: Yup.boolean()
-    .oneOf([true], "Must Accept Terms and Conditions")
-   
+  terms: Yup.boolean().oneOf([true], "Must Accept Terms and Conditions"),
 });
 
 const SignUpForm = () => {
@@ -104,11 +108,10 @@ const SignUpForm = () => {
     enableReinitialize: true,
   });
 
-
   return (
     <div
       style={{ borderRadius: "1rem" }}
-      className="col-lg-4 m-auto bg-warning p-3 position-relative"
+      className="col-md-12 col-lg-6 m-auto bg-warning p-3 position-relative"
     >
       <form onSubmit={formik.handleSubmit}>
         <Input
@@ -138,26 +141,38 @@ const SignUpForm = () => {
           placeHolders={placeHolders}
           type="password"
         />
-        <div className="d-flex">
-          <RadioInput
-            formik={formik}
-            label="Male"
-            value="0"
-            name="gender"
-            id="male"
-          />
-          <RadioInput
-            formik={formik}
-            label="Female"
-            value="1"
-            name="gender"
-            id="female"
-          />
-          <SelectInput
-            formik={formik}
-            name="nationality"
-            selectInputUtil={selectInputUtil}
-          />
+        <div className="row mt-2 g-3">
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-5">
+                {" "}
+                <RadioInput
+                  formik={formik}
+                  label="Male"
+                  value="0"
+                  name="gender"
+                  id="male"
+                />
+              </div>
+              <div className="col-5">
+                {" "}
+                <RadioInput
+                  formik={formik}
+                  label="Female"
+                  value="1"
+                  name="gender"
+                  id="female"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <SelectInput
+              formik={formik}
+              name="nationality"
+              selectInputUtil={selectInputUtil}
+            />
+          </div>
         </div>
 
         <CheckBoxInput
